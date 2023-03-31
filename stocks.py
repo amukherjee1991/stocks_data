@@ -37,7 +37,7 @@ def process_response(response):
 			for d in data:
 				tickers.append(d["symbol"].lower())
 				name.append(d["name"])
-	return zip(tickers[:5],name[:5])
+	return zip(tickers,name)
 
 
 nasdaq=make_request("NASDAQ")
