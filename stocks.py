@@ -12,20 +12,15 @@ Exchanges like NASDAQ,NYSE
 '''
 def make_request(exchange):
     url = "https://twelve-data1.p.rapidapi.com/stocks"
-
     querystring = {f"exchange":{exchange},"format":"json"}
-
     headers = {
     	"X-RapidAPI-Key": "d3b7c1458amsh18c268d298148c9p1f55ccjsn9a161d57b562",
     	"X-RapidAPI-Host": "twelve-data1.p.rapidapi.com"
     }
-
     response = requests.get(url, headers=headers, params=querystring)
     # response_text = json.loads(response.text)
-
     return response.json()
-
-
+	
 '''
 Process response to get tickers
 '''
@@ -46,10 +41,8 @@ nyse = make_request("NYSE")
 
 def download_exchange_data(data):
 	all_tickers = process_response(data)
-	# all_tickers = all_tickers[:10]
 	final_data = pd.DataFrame()
 	for at,name in all_tickers:
-		# print(at,type(at))
 		time.sleep(3)
 		ticker_object= yf.Ticker(at)
 		data=ticker_object.history(period="max",interval="1d")
@@ -60,6 +53,6 @@ def download_exchange_data(data):
 	return final_data
 #
 download_exchange_data(nasdaq).to_csv("Nasdaq_stocks.csv",index=False)
-download_exchange_data(nyse).to_csv("nyse_stocks.csv",index=False)
+download_exchange_data(nyse).to_csv("NYSE_stocks.csv",index=False)
 
 print ("Files saved to project folder")
