@@ -5,6 +5,10 @@ import urllib.request
 import json
 import tqdm
 import requests
+import os
+api_key = os.environ.get('API_KEY')
+if api_key is None:
+    raise ValueError('API key is not set')
 
 '''
 Get all stock names and stuff based on exchanges
@@ -14,13 +18,13 @@ def make_request(exchange):
     url = "https://twelve-data1.p.rapidapi.com/stocks"
     querystring = {f"exchange":{exchange},"format":"json"}
     headers = {
-    	"X-RapidAPI-Key": "d3b7c1458amsh18c268d298148c9p1f55ccjsn9a161d57b562",
+    	"X-RapidAPI-Key": api_key,
     	"X-RapidAPI-Host": "twelve-data1.p.rapidapi.com"
     }
     response = requests.get(url, headers=headers, params=querystring)
     # response_text = json.loads(response.text)
     return response.json()
-	
+
 '''
 Process response to get tickers
 '''
