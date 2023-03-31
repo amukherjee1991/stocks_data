@@ -24,7 +24,7 @@ pip$python_version install -r requirements.txt
 
 # Run the Python script
 echo "Running script..."
-python$python_version stocks.py
+python$python_version driver.py
 
 # Deactivate the virtual environment
 echo "Deactivating virtual environment..."
