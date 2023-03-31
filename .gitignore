@@ -1,3 +1,5 @@
 *.csv
 *.sh
 __pycache__
+stocks.py
+
