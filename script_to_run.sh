@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export API_KEY=d3b7c1458amsh18c268d298148c9p1f55ccjsn9a161d57b562
 # Check for Python version
 if command -v python3 >/dev/null 2>&1; then
     python_version=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
