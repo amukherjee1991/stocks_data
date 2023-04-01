@@ -3,6 +3,7 @@ from twelve_data import RequestStocks
 import pandas as pd
 import time
 
+
 class YFStocks:
 
 	'''
@@ -25,9 +26,16 @@ class YFStocks:
 		fin_data = tickers_hist.stack(level=1).rename_axis(['Date', 'Ticker']).reset_index()
 		return fin_data
 
-	def download_exchange_data(self,exchange):
+    '''
+	uses an exchange name as an argument
+	Retrieves response and process it get tickers as list
+	list is then passed as an argument to yf.Tickers 'all_tickers' variable
+    takes a num argument which represents number of ticker
+	returns a dataframe
+	'''
+	def download_exchange_data(self,exchange,num):
 		response = self.twelve_data.make_request(exchange)
-		all_tickers = self.twelve_data.process_response(response)
+		all_tickers = self.twelve_data.process_response(response,num)
 		final_data = pd.DataFrame()
 		for at,name in all_tickers:
 			time.sleep(3)
