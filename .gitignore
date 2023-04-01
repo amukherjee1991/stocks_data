@@ -2,4 +2,5 @@
 *.sh
 __pycache__
 stocks.py
-
+analyze_etf.py
+stock_app/
