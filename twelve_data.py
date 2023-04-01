@@ -25,7 +25,7 @@ class RequestStocks:
 	download_exchange_data
 	'''
 
-	def process_response(self, response):
+	def process_response(self, response,number=10):
 		tickers = []
 		names = []
 		for k, v in response.items():
@@ -34,7 +34,7 @@ class RequestStocks:
 				for d in data:
 					tickers.append(d["symbol"].lower())
 					names.append(d["name"])
-		return list(zip(tickers[:10], names[:10]))
+		return list(zip(tickers[:number], names[:number]))
 
 	'''
 	process the json to get ticker only
